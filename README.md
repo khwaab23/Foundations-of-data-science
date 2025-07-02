@@ -1,41 +1,50 @@
-# Bank Churn Prediction Using Machine Learning
-
-A Python-based machine learning project predicting customer churn for banks using multiple classification models and data-driven insights to improve customer retention strategies.
+# Causal Impact of Weather on Food Delivery Times
 
 ## Overview
 
-This project analyzes customer data to predict churn, helping banks identify customers likely to leave and proactively improve retention. Using Logistic Regression, Decision Trees, Random Forest, XGBoost, and Support Vector Machines, the project compares model performances and extracts actionable insights for stakeholders.
+This project investigates how weather conditions causally affect food delivery durations, accounting for traffic density as a confounding variable. By exploring these relationships, the analysis offers practical insights to help optimize delivery operations during varying weather and traffic conditions.
 
-## Features
+## Research Objective
 
-- Data cleaning and preprocessing
-- Exploratory Data Analysis (EDA)
-- Model training with multiple classification algorithms
-- Model evaluation and comparison using accuracy, precision, recall, and F1-score
-- Feature importance analysis
-- Insights for customer retention
+To determine the extent to which different weather conditions impact delivery times and how traffic density mediates or confounds this relationship.
+
+## Dataset
+
+- Sourced from Kaggle with 100+ samples, covering:
+  - **Delivery Time (mins)**
+  - **Weather Conditions**: Sunny, Cloudy, Fog, Stormy, Sandstorms, Windy
+  - **Traffic Density**: Low, Medium, High
+
+## Approach
+
+- Built **causal DAG models** representing direct and indirect effects.
+- Used **Bayesian statistical modeling** to estimate total and direct effects.
+- Performed **prior predictive checks and posterior diagnostics** using PyMC and ArviZ.
+- Compared models using **PSIS-LOO cross-validation** for predictive performance assessment.
+- Visualized results with Matplotlib and Seaborn.
+
+## Key Findings
+
+- Sunny weather generally reduces delivery times, while storms, fog, and sandstorms increase delays, particularly under high traffic.
+- Traffic density acts as a confounder and mediator, influencing the magnitude of weather effects on delivery times.
+- The **direct effect model outperformed** the total effect model in predictive accuracy.
+- Posterior predictive checks confirmed the models align well with observed data.
 
 ## Technologies Used
 
 - Python
-- Pandas
-- NumPy
-- scikit-learn
-- XGBoost
-- Matplotlib
-- Seaborn
+- Pandas, NumPy
+- PyMC, ArviZ
+- Matplotlib, Seaborn
+- NetworkX (for DAG visualization)
 - Jupyter Notebook
-
-## Dataset
-
-The project uses a bank churn dataset containing customer demographic details, account balance, tenure, and transaction activity to predict churn labels.
 
 ## How to Run
 
-1. Clone the repository:
+1. Clone this repository:
     ```bash
-    git clone https://github.com/yourusername/bank-churn-prediction.git
-    cd bank-churn-prediction
+    git clone https://github.com/yourusername/causal-weather-delivery.git
+    cd causal-weather-delivery
     ```
 
 2. Install dependencies:
@@ -43,22 +52,23 @@ The project uses a bank churn dataset containing customer demographic details, a
     pip install -r requirements.txt
     ```
 
-3. Run the Jupyter Notebook:
+3. Launch the notebook:
     ```bash
     jupyter notebook
     ```
-    Open the notebook and run all cells to view outputs and visualizations.
+    Run all cells in the notebook to reproduce the analysis, models, and visualizations.
 
-## Results
+## Future Scope
 
-- Achieved high accuracy and balanced precision-recall using Random Forest and XGBoost.
-- Identified key churn indicators including tenure, balance, and transaction activity.
-- Developed interpretable visual insights for non-technical stakeholders.
+- Hierarchical modeling across geographic zones.
+- Advanced causal mediation analysis.
+- Integration of additional features such as time of day and distance buckets.
+- Building a real-time prediction dashboard for delivery optimization.
 
-## Future Improvements
+## Team
 
-- Hyperparameter tuning for optimal performance.
-- Integration with Flask or Streamlit for a user-facing churn prediction dashboard.
-- Testing on additional banking datasets for generalizability.
+- **Aranya Aryaman**
+- **Khwaab Thareja**
+- **Ishaan Mishra**
 
 
